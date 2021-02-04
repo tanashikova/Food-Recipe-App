@@ -1,12 +1,8 @@
 const searchBtn = document.querySelector("#btn");
 let results = document.querySelector(".search-result");
 const watchVideoBtn = document.querySelector(".watch-video-btn");
-const boxModel = document.querySelector('.content');
-const closeBtn = document.getElementById('close-btn');
-
-
-
-
+const boxModel = document.querySelector(".content");
+const closeBtn = document.getElementById("close-btn");
 
 searchBtn.addEventListener("click", (event) => {
   let search = document.querySelector("#search").value;
@@ -23,8 +19,8 @@ searchBtn.addEventListener("click", (event) => {
 });
 
 const printResult = (parsedData) => {
-    let result = "";
-  if (parsedData.meals){
+  let result = "";
+  if (parsedData.meals) {
     parsedData.meals.forEach((meal) => {
       result += `<div class="item" data-id =${meal.idMeal} >
      
@@ -36,44 +32,39 @@ const printResult = (parsedData) => {
     </div>
     </div>`;
     });
-    results.classList.remove('noResults');
-} else {
+    results.classList.remove("noResults");
+  } else {
     result = "Sorry, there is no meal for your search";
-    results.classList.add('noResults')
+    results.classList.add("noResults");
   }
 
   results.innerHTML = result;
-  results.parentElement.classList.add('display-search-result')
+  results.parentElement.classList.add("display-search-result");
+};
 
-}
+const fetchMealDetails = (e) => {
+  e.preventDefault();
+  let mealPrep = e.target.parentElement.parentElement;
+  fetch(
+    `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealPrep.dataset.id}`
+  )
+    .then((response) => response.json())
+    .then((data) => openBoxModel(data.meals));
+};
 
-
-
-
-function fetchMealDetails(e){
-    e.preventDefault();
-        let mealPrep = e.target.parentElement.parentElement;
-        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealPrep.dataset.id}`)
-        .then(response => response.json())
-        .then(data => openBoxModel(data.meals));
-  
-}
-
-
-function openBoxModel(meal){
-    meal = meal[0];
-    let modalBoxUI = `
+const openBoxModel = (meal) => {
+  meal = meal[0];
+  let modalBoxUI = `
   
         <div class = "recipe-link">
             <a href = "${meal.strYoutube}" target = "_blank">Watch Video</a>
         </div>
     `;
-    boxModel.innerHTML = modalBoxUI;
-    boxModel.parentElement.classList.add('details');
-}
-results.addEventListener('click', fetchMealDetails);
+  boxModel.innerHTML = modalBoxUI;
+  boxModel.parentElement.classList.add("details");
+};
+results.addEventListener("click", fetchMealDetails);
 
-
-window.addEventListener('click', () => {
-    boxModel.parentElement.classList.remove('details');
+window.addEventListener("click", () => {
+  boxModel.parentElement.classList.remove("details");
 });
