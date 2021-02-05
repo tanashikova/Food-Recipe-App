@@ -2,7 +2,7 @@ const searchBtn = document.querySelector("#btn");
 let results = document.querySelector(".search-result");
 const watchVideoBtn = document.querySelector(".watch-video-btn");
 const boxModel = document.querySelector(".content");
-const closeBtn = document.getElementById("close-btn");
+const closeBtn = document.querySelector(".close-btn");
 
 searchBtn.addEventListener("click", (event) => {
   let search = document.querySelector("#search").value;
@@ -27,7 +27,7 @@ const printResult = (parsedData) => {
       <img src="${meal.strMealThumb}">
       <div class="title-container">
         <h1 class="title">${meal.strMeal}</h1>
-        <button class="watch-video-btn">Watch Video</button>
+        <button class="see-details-btn">See details</button>
      
     </div>
     </div>`;
@@ -53,18 +53,27 @@ const fetchMealDetails = (e) => {
 };
 
 const openBoxModel = (meal) => {
+    let modalBoxUI = "";
+  console.log(meal);
   meal = meal[0];
-  let modalBoxUI = `
-  
+   modalBoxUI += `
+        <ul class = "ingridiens">  Main Ingredients
+            <li> ${meal.strIngredient1}</li> 
+            <li> ${meal.strIngredient2}</li>
+            <li> ${meal.strIngredient3}</li>
+            <li> ${meal.strIngredient4}</li>
+            <li> ${meal.strIngredient5}</li>
+         </ul>
         <div class = "recipe-link">
             <a href = "${meal.strYoutube}" target = "_blank">Watch Video</a>
         </div>
+ 
     `;
   boxModel.innerHTML = modalBoxUI;
   boxModel.parentElement.classList.add("details");
 };
-results.addEventListener("click", fetchMealDetails);
 
-window.addEventListener("click", () => {
+results.addEventListener("click", fetchMealDetails);
+closeBtn.addEventListener("click", () => {
   boxModel.parentElement.classList.remove("details");
 });
