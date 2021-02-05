@@ -59,7 +59,7 @@ h3 {
   outline: none;
 }
 
-section {
+main {
   display: none;
   margin: 40px auto;
   padding: 40px;
@@ -79,13 +79,13 @@ section {
   grid-auto-rows: auto;
 }
 
-.item {
+.card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
   border-radius: 10px;
 }
 
-.item img {
+.card img {
   width: 100%;
   height: 70%;
   border-radius: 10px;
@@ -99,19 +99,12 @@ section {
   margin-top: 15px;
 }
 
-.noResults {
-  grid-template-columns: 1fr;
-  font-size: 20px;
-  font-weight: bold;
-  width: 100%;
-}
-
 .details-container {
   position: fixed;
   top: 30%;
   left: 37%;
   color: rgb(201, 231, 142);
-  border-radius: 1rem;
+  border-radius: 7px;
   width: 26%;
   height: 40%;
   display: none;
@@ -133,7 +126,7 @@ li{
   font-size: 20px;
   font-weight: bold;
 }
-.recipe-link a {
+.link a {
   color: rgb(201, 231, 142);
   font-size: 20px;
   font-weight: bold;
@@ -142,12 +135,13 @@ li{
 .close-btn {
   background-color:whitesmoke;
   color: rgb(156, 153, 153);
-  padding:2px;
-  height: 26px;
+  width:25px;
+  padding:0px;
+  height: 25px;
   border-radius: 5px;
   outline: none;
   position: absolute;
-  right: 10px;
+  right: 5px;
   top: 5px;
 }
 @media (max-width: 768px) {
