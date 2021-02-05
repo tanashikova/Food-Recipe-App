@@ -2,8 +2,8 @@
 
 
 **Project Screenshots**
-![Default page of Food Recipe App](/image/RecipeBookDefaultPage.png/)
-![Recipe Book Search Resault Page](/image/RecipeBookSearchResultPage.png/)
+![Default page of Food Recipe App](images/RecipeBookDefaultPage.png)
+![Recipe Book Search Resault Page](images/RecipeBookSearchResultPage.png)
 
 **Technologies used**
 Javascript
