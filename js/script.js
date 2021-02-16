@@ -26,13 +26,14 @@ const printResult = (parsedData) => {
   } else {
     result = "Sorry, there is no meal for your search";
   }
-    results.innerHTML = result;
+  results.innerHTML = result;
   results.parentNode.classList.add("display-search-result");
 };
 
 results.addEventListener("click", (event) => {
   let mealDetails = event.target.parentNode.parentNode;
-  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealDetails.dataset.id}`
+  fetch(
+    `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealDetails.dataset.id}`
   )
     .then((resData) => resData.json())
     .then((parsedData) => openBoxModel(parsedData.meals))
